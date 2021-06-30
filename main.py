@@ -15,5 +15,5 @@ def index():
 def hello():
     user_ip = request.cookies.get('user_ip')
 
-    return 'Hello World Flask, tu IP es {}'.format(user_ip)
+    return render_template('hello.html', user_ip=user_ip)
 
