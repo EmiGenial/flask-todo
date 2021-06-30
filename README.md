@@ -1,2 +1,2 @@
 # flask-todo
-Cursito Rapido de Flask 
+Cursito Rápido de Flask 
