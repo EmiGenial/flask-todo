@@ -8,12 +8,13 @@
 
 {% block content %}
     {% if user_ip %}
-        <h1>Hello world from Flask, tu IP es {{ user_ip }}</h1>
+        <h1 class="is-size-3">Hello world from Flask, tu IP es {{ user_ip }}</h1>
     {%else%}
         <a href="{{ url_for('index') }}">Ir al inicio</a>
     {% endif %}
     
-    <ul>
+    <ul class="menu-list">
+        <p class="mt-5"><strong>TAREAS</strong></p>
         {% for todo in todos %}
             {{ macros.render_todo(todo) }}
         {% endfor %}

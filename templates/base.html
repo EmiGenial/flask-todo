@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>
         {% block title %} Flask Platzi | {% endblock %}
     </title>
 </head>
-<body>
-    <header>
+<body class="m-1">
+    <header class="mb-3">
         {% include 'navbar.html' %}
     </header>
     {% block content %}

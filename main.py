@@ -1,7 +1,8 @@
-from logging import error
-from flask import Flask, request, make_response, redirect, render_template
+# from logging import error
+from flask import Flask, request, make_response, redirect, render_template, session
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'super secreto'
 
 todos = ['Comprar café', 'Enviar solicitud de compra', 'Entregar video al productor']
 
@@ -13,22 +14,18 @@ def not_found(error):
 def internal_server_error(error):
     return render_template('500.html', error=error)
 
-# @app.route('/')
-# def index():
-#     user_ip = request.remote_addr
-
-#     response = make_response(redirect('/hello'))
-#     response.set_cookie('user_ip', user_ip)
- 
-#     return response
-
-@app.route("/")
+@app.route('/')
 def index():
-    raise(Exception('500 Error'))
+    user_ip = request.remote_addr
+
+    response = make_response(redirect('/hello'))
+    session['user_ip'] = user_ip
+    
+    return response
 
 @app.route('/hello')
 def hello():
-    user_ip = request.cookies.get('user_ip')
+    user_ip = session.get('user_ip')
     context = {
         'user_ip':user_ip,
         'todos':todos

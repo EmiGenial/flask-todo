@@ -1,6 +1,9 @@
-html * {
+/* html * {
     font-family: sans-serif;
-}
+} */
 img {
-    max-width: 30px;
+    max-width: 100px;
+    margin-top: 50px;
+    display: inline-block;
+    position: absolute;
 }
