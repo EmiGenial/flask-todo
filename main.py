@@ -10,7 +10,7 @@ def index():
 
     response = make_response(redirect('/hello'))
     response.set_cookie('user_ip', user_ip)
-
+ 
     return response
 
 @app.route('/hello')
