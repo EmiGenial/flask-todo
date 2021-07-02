@@ -1,5 +1,5 @@
 # from logging import error
-from flask import Flask, request, make_response, redirect, render_template, session, url_for
+from flask import Flask, request, make_response, redirect, render_template, session, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
@@ -11,11 +11,11 @@ app.config['WTF_CSRF_ENABLED']= True
 todos = ['Comprar café', 'Enviar solicitud de compra', 'Entregar video al productor']
 
 class LoginForm(FlaskForm):
-    style={'class':'input is-small mt-1'}
-    style2={'class':'button is-primary mt-5'}
-    username = StringField('Nombre de usuario', validators=[DataRequired()], render_kw=style)
-    password = PasswordField('Password', validators=[DataRequired()], render_kw=style)
-    submit = SubmitField('Login', render_kw=style2)
+    input={'class':'input is-small mt-1'}
+    button={'class':'button is-primary mt-5'}
+    username = StringField('Nombre de usuario', validators=[DataRequired()], render_kw=input)
+    password = PasswordField('Password', validators=[DataRequired()], render_kw=input)
+    submit = SubmitField('Login', render_kw=button)
 
 @app.errorhandler(404)
 def not_found(error):
@@ -48,7 +48,7 @@ def hello():
     if login_form.validate_on_submit():
         username = login_form.username.data
         session['username'] = username
-        print('USERNAME: '+username)
+        flash('Registrado con éxito!', category='is-primary is-light')
         return redirect(url_for('index'))
 
     return render_template('hello.html', **context)

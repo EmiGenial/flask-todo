@@ -12,8 +12,14 @@
     <header class="mb-3">
         {% include 'navbar.html' %}
     </header>
-    {% block content %}
-    {% endblock %}
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="notification {{ category }}">
+            <button class="delete"></button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src={{ url_for('static',filename='js/events.js') }}></script>
 </body>
 </html>
