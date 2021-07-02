@@ -3,6 +3,7 @@ from flask import Flask, request, make_response, redirect, render_template, sess
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+import unittest
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secreto'
@@ -16,6 +17,11 @@ class LoginForm(FlaskForm):
     username = StringField('Nombre de usuario', validators=[DataRequired()], render_kw=input)
     password = PasswordField('Password', validators=[DataRequired()], render_kw=input)
     submit = SubmitField('Login', render_kw=button)
+
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 @app.errorhandler(404)
 def not_found(error):
