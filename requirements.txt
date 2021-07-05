@@ -2,3 +2,4 @@ Flask
 wheel
 flask-wtf
 Flask-testing
+blinker

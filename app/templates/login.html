@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+    404
+{% endblock %}
+
+{% block content%}
+<div class="container">
+    <form method="POST" action="{{url_for('hello')}}">
+        {{login_form.csrf_token}}
+        {{login_form.username.label}}
+        {{login_form.username}}
+        {{login_form.password.label}}
+        {{login_form.password}}
+        {{login_form.submit}}
+    </form>
+</div>
+{% endblock %}
