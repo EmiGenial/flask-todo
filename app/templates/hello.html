@@ -15,16 +15,7 @@
     {%else%}
         <a href="{{ url_for('index') }}">Ir al inicio</a>
     {% endif %}
-
-    <!-- <form method="POST" action="{{url_for('hello')}}">
-        {{login_form.csrf_token}}
-        {{login_form.username.label}}
-        {{login_form.username}}
-        {{login_form.password.label}}
-        {{login_form.password}}
-        {{login_form.submit}}
-    </form> -->
-    
+ 
     <ul class="menu-list">
         <p class="mt-5"><strong>TAREAS</strong></p>
         {% for todo in todos %}

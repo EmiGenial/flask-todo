@@ -5,13 +5,13 @@
     404
 {% endblock %}
 
-{% block content%}
+{% block content %}
 <div class="container">
-    <form method="POST" action="{{url_for('hello')}}">
+    <form method="POST" action="{{url_for('auth.login')}}">
         {{login_form.csrf_token}}
-        {{login_form.username.label}}
+        {{login_form.username.label(class_="label")}}
         {{login_form.username}}
-        {{login_form.password.label}}
+        {{login_form.password.label(class_="label mt-4")}}
         {{login_form.password}}
         {{login_form.submit}}
     </form>
