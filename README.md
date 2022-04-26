@@ -1,2 +1,2 @@
 # flask-todo
-Cursito Rápido de Flask 
+Cursito de Flask | Platzi
